@@ -10,7 +10,7 @@ import psycopg2
 import numpy as np
 
 
-conn = psycopg2.connect("conect info")
+conn = psycopg2.connect("host=aws_host_name dbname=data_base_name user=user_name port=port_num password=my_password")
 df=pd.read_sql('select * from snow',conn)
 hire = pd.read_sql('select count(distinct employee_nbr) as hires, extract(month from doh) as month from snow where extract(year from doh )=2017 group by extract(month from doh) order by extract(month from doh)',conn)
 term = pd.read_sql('select count(distinct employee_nbr) as left, extract(month from dot) as month from snow where extract(year from dot )=2017 group by extract(month from dot) order by extract(month from dot)',conn)
@@ -22,7 +22,7 @@ d = {'Jan ':1,'Feb ':2,'Mar ':3,'Apr ':4,'May ':5,'Jun ':6,'Jul ':7,'Aug ':8,'Se
 df['month'] = df['month'].map(d)
 
 username_pass = [
-    ['Username','password'], ['Username','password']
+    ['User_name','pass_word'], ['user_name2','pass_word#2']
 ]
 
 
